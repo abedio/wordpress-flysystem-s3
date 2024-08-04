@@ -32,6 +32,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: ${{ github.event.repository.name }}
 
       - name: Composer install
         uses: php-actions/composer@v6
@@ -39,7 +41,7 @@ jobs:
           php_version: ${{ matrix.php }}
 
       - name: Archive
-        run: zip -r ${{ github.event.repository.name }}-php-${{ matrix.php }}.zip ./
+        run: rm -rf "${{ github.event.repository.name }}/.git" "${{ github.event.repository.name }}/.github" && zip -r ${{ github.event.repository.name }}-php-${{ matrix.php }}.zip ./${{ github.event.repository.name }}
 
       - name: Upload
         run: gh release upload ${{ github.ref_name }} ${{ github.event.repository.name }}-php-${{ matrix.php }}.zip
