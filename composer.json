@@ -1,0 +1,22 @@
+{
+    "name": "abedi-ir/wordpress-flysystem-s3",
+    "description": "Upload wordpress media files to s3 object storage",
+    "type": "library",
+    "require": {
+        "php": "^7.4|^8.0",
+        "league/flysystem-aws-s3-v3": "^2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mahdi Abedi",
+            "email": "abedi@bluc.ir"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Abedi\\WPFlysystemS3\\": "src/"
+        }
+    }
+}
