@@ -42,9 +42,10 @@ jobs:
           working_dir:  ${{ github.event.repository.name }}
 
       - name: Archive
-        run: rm -rf "${{ github.event.repository.name }}/.git" "${{ github.event.repository.name }}/.github" && zip -r ${{ github.event.repository.name }}-php-${{ matrix.php }}.zip ./${{ github.event.repository.name }}
+        run: zip -r ${{ github.event.repository.name }}-php-${{ matrix.php }}.zip ./${{ github.event.repository.name }} -x "*.git*"
 
       - name: Upload
-        run: gh release upload ${{ github.ref_name }} ${{ github.event.repository.name }}-php-${{ matrix.php }}.zip
+        working-directory: ${{ github.event.repository.name }}
+        run: gh release upload ${{ github.ref_name }} ../${{ github.event.repository.name }}-php-${{ matrix.php }}.zip
         env:
           GH_TOKEN: ${{ github.token }}
