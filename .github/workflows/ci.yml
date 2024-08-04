@@ -39,6 +39,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
+          working_dir:  ${{ github.event.repository.name }}
 
       - name: Archive
         run: rm -rf "${{ github.event.repository.name }}/.git" "${{ github.event.repository.name }}/.github" && zip -r ${{ github.event.repository.name }}-php-${{ matrix.php }}.zip ./${{ github.event.repository.name }}
