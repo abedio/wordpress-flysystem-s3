@@ -79,7 +79,7 @@ class S3Manager
             $url .= '/'.S3_ROOT;
         }
         
-        return $url.'/'.trim($path, '/').'/';
+        return $url.'/'.trim($path, '/');
     }
 
     /**
