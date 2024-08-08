@@ -74,12 +74,12 @@ class S3Manager
     public function getUrl(string $path): string
     {
         $endpoint = rtrim(S3_ENDPOINT, '/');
-        $url = $endpoint.'/'.S3_BUCKET.'/';
+        $url = $endpoint.'/'.S3_BUCKET;
         if (defined('S3_ROOT')) {
-            $url .= S3_ROOT.'/';
+            $url .= '/'.S3_ROOT;
         }
         
-        return $url.$path;
+        return $url.'/'.trim($path, '/').'/';
     }
 
     /**

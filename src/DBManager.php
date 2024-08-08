@@ -30,8 +30,8 @@ class DBManager
 		return $this->db;
 	}
 
-	public function getTable(): string
+	public function getTable(?string $column = null): string
 	{
-		return "{$this->getDB()->base_prefix}fs_s3_files";
+		return $this->getDB()->base_prefix.($column ?: "fs_s3_files");
 	}
 }
